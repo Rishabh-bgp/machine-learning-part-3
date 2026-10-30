@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ROAD//SCAN — YOLO11 road damage detector</title>
+<meta name="description" content="Detect potholes, cracks and manholes in road photos with a YOLO11n model running entirely in your browser.">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Cpolygon points=%2232,4 60,32 32,60 4,32%22 fill=%22%23ffd60a%22/%3E%3C/svg%3E">
+</head>
+<body>
+<div class="hazard top"></div>
+<header>
+  <div class="brand">
+    <svg class="mark" viewBox="0 0 64 64" aria-hidden="true">
+      <polygon points="32,4 60,32 32,60 4,32" fill="none" stroke="currentColor" stroke-width="4"/>
+      <rect x="29" y="16" width="6" height="10" rx="1" fill="currentColor"/>
+      <rect x="29" y="30" width="6" height="10" rx="1" fill="currentColor"/>
+      <rect x="29" y="44" width="6" height="5" rx="1" fill="currentColor"/>
+    </svg>
+    <div>
+      <h1>ROAD<span>//</span>SCAN</h1>
+      <p class="tag">YOLO11n road damage detector · runs 100% in your browser</p>
+    </div>
+  </div>
+  <div class="status"><span id="dot" class="dot"></span><span id="status">Loading model…</span></div>
+</header>
+
+<main>
+  <section class="stage">
+    <div id="drop" class="drop" tabindex="0" role="button" aria-label="Upload a road image">
+      <input id="file" type="file" accept="image/*" hidden>
+      <div id="hint" class="hint">
+        <div class="cone">▲</div>
+        <strong>Drop a road photo here</strong>
+        <span>or click to choose · JPG / PNG · nothing leaves your device</span>
+      </div>
+      <div id="view" class="view hidden">
+        <canvas id="canvas"></canvas>
+        <div id="laser" class="laser"></div>
+        <div class="corners"><i></i><i></i><i></i><i></i></div>
+      </div>
+    </div>
+    <div class="samples">
+      <span class="label">TRY A SAMPLE</span>
+      <div id="sampleRow" class="row"></div>
+    </div>
+  </section>
+
+  <aside class="hud">
+    <div class="panel health">
+      <div class="ptitle">ROAD HEALTH</div>
+      <div class="gauge">
+        <svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" class="track"/><circle id="ring" cx="60" cy="60" r="50" class="ring"/></svg>
+        <div class="score"><b id="score">--</b><small id="grade">awaiting scan</small></div>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="ptitle">DETECTIONS</div>
+      <div class="counts">
+        <div class="cnt pothole"><b data-k="0">0</b><span>Potholes</span></div>
+        <div class="cnt crack"><b data-k="1">0</b><span>Cracks</span></div>
+        <div class="cnt manhole"><b data-k="2">0</b><span>Manholes</span></div>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="ptitle">CONFIDENCE <span class="thr">min <output id="confOut">0.25</output></span></div>
+      <input id="conf" type="range" min="0.05" max="0.9" step="0.05" value="0.25">
+      <ul id="list" class="list"><li class="empty">No detections yet.</li></ul>
+    </div>
+    <div class="panel meta"><span id="timing">—</span></div>
+  </aside>
+</main>
+
+<footer>
+  <div class="lane"></div>
+  <p>Model: YOLO11n fine-tuned on the Kaggle <a href="https://www.kaggle.com/datasets/lorenzoarcioni/road-damage-dataset-potholes-cracks-and-manholes">Road Damage Dataset</a> by Lorenzo Arcioni ·
+  <a href="https://github.com/Rishabh-bgp/machine-learning-part-3">Source on GitHub</a> · MIT © 2026 Rishabh Aryan</p>
+</footer>
+<div class="hazard bottom"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.20.1/dist/ort.min.js"></script>
+<script src="detect.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

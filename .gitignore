@@ -1,0 +1,24 @@
+__pycache__/
+.ipynb_checkpoints/
+.venv/
+.env
+kaggle.json
+
+# dataset and training runs are never committed
+road_damage_yolo/
+runs/
+predictions/
+*.pt
+*.onnx
+*.jpg
+*.jpeg
+*.png
+
+# keep results, the trained weights and the web demo
+!results/
+!results/**
+!models/
+!models/best.pt
+!models/best.onnx
+!docs/
+!docs/**
