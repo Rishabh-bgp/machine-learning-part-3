@@ -138,6 +138,7 @@ requirements.txt  LICENSE  README.md
 - [Machine Learning Part 1](https://github.com/Rishabh-bgp/machine-learning-part-1) — heart-disease classification & insurance-cost regression
 - [Machine Learning Part 2](https://github.com/Rishabh-bgp/machine-learning-part-2) — YOLO11 task tour & potato leaf disease classification
 - **Machine Learning Part 3** — road damage detection (this repository)
+- [Responsible AI on UCI Adult](https://github.com/Rishabh-bgp/responsible-ai-uci-adult) — fairness, explainability & governance audit · [live dashboard](https://rishabh-bgp.github.io/responsible-ai-uci-adult/)
 - [NIELIT Machine Learning Projects](https://github.com/Rishabh-bgp/NIELIT-MACHINE-LEARNING-PROJECTS)
 - [All repositories](https://github.com/Rishabh-bgp?tab=repositories)
 
